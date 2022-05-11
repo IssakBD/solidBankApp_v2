@@ -1,6 +1,4 @@
-# solidBankApp
-
-## Solid Bank Application
+# Solid Bank Application
 ### How to run:
 ```
 java -jar solidBankApp.jar
