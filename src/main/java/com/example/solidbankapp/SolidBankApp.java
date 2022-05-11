@@ -5,10 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Scanner;
-
 @SpringBootApplication
-public class SolidBankAppApplication {
+public class SolidBankApp {
 
     public static void main(String[] args) {
 
