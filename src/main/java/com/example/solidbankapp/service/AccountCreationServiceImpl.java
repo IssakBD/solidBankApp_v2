@@ -9,15 +9,12 @@ public class AccountCreationServiceImpl implements AccountCreationService{
     public void create(AccountType accountType, long bankID, String clientID, long accountID) {
         if (accountType.equals(AccountType.FIXEDACCOUNT)) {
             accountDAO.createNewAccount(new FixedAccount(accountType, String.valueOf(accountID), clientID, 0, false));
-            System.out.println("Bank account created");
         }
         else if (accountType.equals(AccountType.CHECKINGACCOUNT)) {
             accountDAO.createNewAccount(new CheckingAccount(accountType, String.valueOf(accountID), clientID, 0, true));
-            System.out.println("Bank account created");
         }
         else if (accountType.equals(AccountType.SAVINGACCOUNT)) {
             accountDAO.createNewAccount(new SavingAccount(accountType, String.valueOf(accountID), clientID, 0, true));
-            System.out.println("Bank account created");
         }
 
     }

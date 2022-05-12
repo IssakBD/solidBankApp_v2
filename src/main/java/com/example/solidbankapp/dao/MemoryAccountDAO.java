@@ -21,6 +21,7 @@ public class MemoryAccountDAO implements AccountDAO{
     @Override
     public void createNewAccount(Account account) {
         accountList.add(account);
+        System.out.println("Bank account created");
     }
 
     @Override

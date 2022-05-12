@@ -21,7 +21,6 @@ public class SolidBankApp {
         //Записал в переменную сообщение которое нужно каждый раз выводить
         String msg = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit";
         System.out.println(msg);
-
         //while(true) loop чтобы каждый раз принимать данные через Scanner
             while(true){
                 try {
@@ -62,3 +61,10 @@ public class SolidBankApp {
         }
     }
 }
+
+
+//S - single responsibility - каждый класс выполняет свою логику listing class и creation class.
+//O - мы можем добавлять новые методы в классах но не будем изменять уже существующий чтобы работающий код не ломался.
+//Liskov substitution principle - у кошки eat будет выполнять то же самое что и у dog но не так чтобы он пошел по спать чтобы ожидаемо в коде то что было задумано родителем.
+//Interface segregation principle - listging creation interfaces
+//Dependency inversion - в инъекции можно передавать родительский интерфейс не меняя тот класс.
