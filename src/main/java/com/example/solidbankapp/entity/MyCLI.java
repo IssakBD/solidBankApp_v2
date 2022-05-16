@@ -15,7 +15,8 @@ public class MyCLI implements CLIUI{
 
     public double requestClientAmount(){
         return 0;
-    };
+    }
+
     public String requestClientAccountNumber(){
         return null;
     };
