@@ -4,20 +4,27 @@ import com.example.solidbankapp.dao.AccountDAO;
 import com.example.solidbankapp.entity.Account;
 import com.example.solidbankapp.entity.AccountType;
 import com.example.solidbankapp.entity.AccountWithdraw;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AccountListingServiceImpl implements AccountListingService{
     private AccountDAO accountDAO;
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
-        return null;
+        return accountDAO.getClientAccount(clientID, accountID);
     }
 
     @Override
-    public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
-        return null;
+    public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) throws Exception {
+        if(accountDAO.getClientAccount(clientID, accountID).isWithdrawAllowed()) {
+            return accountDAO.getClientWithdrawAccount(clientID, accountID);
+        }else {
+            throw new Exception("You can't withdraw from fixed account!");
+        }
     }
 
     @Override
@@ -27,9 +34,10 @@ public class AccountListingServiceImpl implements AccountListingService{
 
     @Override
     public List<Account> getClientAccountsByType(String clientID, AccountType accountType) {
-        return null;
+        return accountDAO.getClientAccountsByType(clientID, accountType);
     }
 
+    @Autowired
     public AccountListingServiceImpl(AccountDAO accountDAO) {
         this.accountDAO = accountDAO;
     }
