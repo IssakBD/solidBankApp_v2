@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AccountDAO {
+public interface AccountDAO{
     public List<Account> getClientAccounts(String clientID);
     public void createNewAccount(Account account);
     public void updateAccount(Account account, Account newAcc);
