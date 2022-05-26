@@ -14,7 +14,7 @@ public interface AccountDAO extends CrudRepository<Account, Long>{
     public List<Account> getClientAccounts(Long clientID);
 
     @Modifying
-    @Query("INSERT INTO ACCOUNT (ACCOUNT_TYPE, CLIENT_ID, BALANCE, WITHDRAW_ALLOWED) VALUES (:id, :accountType, :clientID, :balance, :withdrawAllowed)")
+    @Query("INSERT INTO ACCOUNT (ACCOUNT_TYPE, CLIENT_ID, BALANCE, WITHDRAW_ALLOWED) VALUES (:accountType, :clientID, :balance, :withdrawAllowed)")
     public void createNewAccount(String accountType, Long clientID, double balance, boolean withdrawAllowed);
 
     @Query("SELECT MAX(ACCOUNT_ID) FROM ACCOUNT")
@@ -33,9 +33,13 @@ public interface AccountDAO extends CrudRepository<Account, Long>{
     @Query("SELECT BALANCE FROM ACCOUNT WHERE FULL_ACCOUNT_ID = :fullAccountID")
     public double getBalance(String fullAccountID);
 
-
+    @Query("SELECT * FROM ACCOUNT WHERE ACCOUNT_TYPE = :accoutType")
     public List<Account> getClientAccountsByType(Long clientID, AccountType accountType);
-    public AccountWithdraw getClientWithdrawAccount(Long clientID, String accountID);
+
+    @Query("SELECT * FROM ACCOUNT WHERE FULL_ACCOUNT_ID = :fullAccountID")
+    public AccountWithdraw getClientWithdrawAccount(Long clientID, String fullAccountID);
+
+    @Query("SELECT * FROM ACCOUNT WHERE FULL_ACCOUNT_ID = :accountID")
     public Account getClientAccount(Long clientID, String accountID);
 
 }

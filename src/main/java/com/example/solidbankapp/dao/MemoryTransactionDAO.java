@@ -20,7 +20,7 @@ public class MemoryTransactionDAO implements TransactionDAO{
     }
 
     @Override
-    public void addTransaction(Transaction transaction) {
+    public void addTransactions(Transaction transaction) {
         transactions.add(transaction);
     }
 }

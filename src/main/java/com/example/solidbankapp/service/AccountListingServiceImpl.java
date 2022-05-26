@@ -21,7 +21,7 @@ public class AccountListingServiceImpl implements AccountListingService{
     @Override
     public AccountWithdraw getClientWithdrawAccount(Long clientID, String accountID) throws Exception {
         if(accountDAO.getClientAccount(clientID, accountID).isWithdrawAllowed()) {
-            return accountDAO.getClientWithdrawAccount(clientID, accountID);
+            return accountDAO.getClientWithdrawAccount(clientID, accountID); //? Он возвращает все строки подходящие по accountID, а как объект вернуть?
         }else {
             throw new Exception("You can't withdraw from fixed account!");
         }

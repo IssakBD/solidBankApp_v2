@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 public class Account {
     private String fullAccountID;
     private String accountType;
-    private @Id Long id;
+    private @Id Long accountID;
     private Long clientID;
     private double balance;
     private boolean withdrawAllowed;
@@ -23,4 +23,16 @@ public class Account {
         return withdrawAllowed;
     }
 
+    @Override
+    public String toString() {
+        return "\n" + "Account{" +
+                "fullAccountID='" + fullAccountID + '\'' +
+                ", accountType='" + accountType + '\'' +
+                ", accountID=" + accountID +
+                ", clientID=" + clientID +
+                ", balance=" + balance +
+                ", withdrawAllowed=" + withdrawAllowed +
+                '}';
+
+    }
 }

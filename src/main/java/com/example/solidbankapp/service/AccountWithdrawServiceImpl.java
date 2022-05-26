@@ -22,6 +22,8 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService{
 //            accountDAO.updateAccount(account, newAcc);
 //            System.out.printf("%.2f$ transferred from %s account \n", amount, newAcc.getId());
             accountDAO.updateBalance(accountDAO.getBalance(account.getFullAccountID()) - amount, account.getFullAccountID());
+            System.out.printf("%.2f$ transferred from %s account \n", amount, account.getFullAccountID());
+
         }
         else{
             System.out.println("You can't withdraw amount more than " + accountDAO.getBalance(account.getFullAccountID()));
