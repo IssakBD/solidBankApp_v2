@@ -15,9 +15,10 @@ public class AccountDepositServiceImpl implements AccountDepositService{
 
     @Override
     public void deposit(double amount, Account account) {
-        Account newAcc = account;
-        newAcc.setBalance(account.getBalance() + amount);
-        accountDAO.updateAccount(account, newAcc);
-        System.out.printf("%.2f$ transferred to %s account \n", amount, newAcc.getId());
+//        Account newAcc = account;
+//        newAcc.setBalance(account.getBalance() + amount);
+//        accountDAO.updateAccount(account, newAcc);
+//        System.out.printf("%.2f$ transferred to %s account \n", amount, newAcc.getId());
+        accountDAO.updateBalance(accountDAO.getBalance(account.getFullAccountID()) + amount, account.getFullAccountID());
     }
 }

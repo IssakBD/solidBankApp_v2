@@ -3,9 +3,10 @@ package com.example.solidbankapp.entity;
 import com.example.solidbankapp.dao.TransactionDAO;
 import com.example.solidbankapp.service.AccountWithdrawService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class TransactionWithdraw {
     AccountWithdrawService accountWithdrawService;
     TransactionDAO transactionDAO;

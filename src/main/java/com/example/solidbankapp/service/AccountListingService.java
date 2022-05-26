@@ -9,8 +9,8 @@ import java.util.List;
 
 @Service
 public interface AccountListingService {
-    public Account getClientAccount(String clientID, String accountID);
-    public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) throws Exception;
-    public List<Account> getClientAccounts(String clientID);
-    public List<Account> getClientAccountsByType(String clientID, AccountType accountType);
+    public Account getClientAccount(Long clientID, String accountID);
+    public AccountWithdraw getClientWithdrawAccount(Long clientID, String accountID) throws Exception;
+    public List<Account> getClientAccounts(Long clientID);
+    public List<Account> getClientAccountsByType(Long clientID, AccountType accountType);
 }

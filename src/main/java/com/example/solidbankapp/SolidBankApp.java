@@ -18,7 +18,7 @@ public class SolidBankApp implements CommandLineRunner{
 
     @Override
     public void run(String... arg0) throws Exception {
-        String clientID = "1";
+        Long clientID = Long.valueOf(1);
         MyCLI myCLI = context.getBean(MyCLI.class);
         AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
         TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);

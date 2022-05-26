@@ -14,12 +14,12 @@ public class AccountListingServiceImpl implements AccountListingService{
     private AccountDAO accountDAO;
 
     @Override
-    public Account getClientAccount(String clientID, String accountID) {
+    public Account getClientAccount(Long clientID, String accountID) {
         return accountDAO.getClientAccount(clientID, accountID);
     }
 
     @Override
-    public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) throws Exception {
+    public AccountWithdraw getClientWithdrawAccount(Long clientID, String accountID) throws Exception {
         if(accountDAO.getClientAccount(clientID, accountID).isWithdrawAllowed()) {
             return accountDAO.getClientWithdrawAccount(clientID, accountID);
         }else {
@@ -28,12 +28,12 @@ public class AccountListingServiceImpl implements AccountListingService{
     }
 
     @Override
-    public List<Account> getClientAccounts(String clientID) {
+    public List<Account> getClientAccounts(Long clientID) {
         return accountDAO.getClientAccounts(clientID);
     }
 
     @Override
-    public List<Account> getClientAccountsByType(String clientID, AccountType accountType) {
+    public List<Account> getClientAccountsByType(Long clientID, AccountType accountType) {
         return accountDAO.getClientAccountsByType(clientID, accountType);
     }
 

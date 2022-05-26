@@ -16,14 +16,15 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService{
 
     @Override
     public void withdraw(double amount, AccountWithdraw account) {
-        if(account.getBalance() >= amount){
-            AccountWithdraw newAcc = account;
-            newAcc.setBalance(account.getBalance() - amount);
-            accountDAO.updateAccount(account, newAcc);
-            System.out.printf("%.2f$ transferred from %s account \n", amount, newAcc.getId());
+        if(accountDAO.getBalance(account.getFullAccountID()) >= amount){
+//            AccountWithdraw newAcc = account;
+//            newAcc.setBalance(account.getBalance() - amount);
+//            accountDAO.updateAccount(account, newAcc);
+//            System.out.printf("%.2f$ transferred from %s account \n", amount, newAcc.getId());
+            accountDAO.updateBalance(accountDAO.getBalance(account.getFullAccountID()) - amount, account.getFullAccountID());
         }
         else{
-            System.out.println("You can't withdraw amount more than " + account.getBalance());
+            System.out.println("You can't withdraw amount more than " + accountDAO.getBalance(account.getFullAccountID()));
         }
     }
 

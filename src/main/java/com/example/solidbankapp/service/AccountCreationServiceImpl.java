@@ -8,18 +8,25 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountCreationServiceImpl implements AccountCreationService{
     private AccountDAO accountDAO;
-
+//String.format("%03d%06d",1, accountID),
     @Override
-    public void create(AccountType accountType, long bankID, String clientID, long accountID) {
+    public void create(AccountType accountType, long bankID, Long clientID) {
+        Account account = null;
         if (accountType.equals(AccountType.FIXEDACCOUNT)) {
-            accountDAO.createNewAccount(new FixedAccount(accountType, String.format("%03d%06d",1, accountID) , clientID, 0, false));
+            account = new FixedAccount(accountType.toString(), clientID, 0, false);
         }
         else if (accountType.equals(AccountType.CHECKINGACCOUNT)) {
-            accountDAO.createNewAccount(new CheckingAccount(accountType, String.format("%03d%06d",1, accountID), clientID, 0, true));
+            account = new CheckingAccount(accountType.toString(), clientID, 0, true);
+//            accountDAO.createNewAccount(new CheckingAccount(String.format("%03d%06d",1, accountID), accountType, clientID, 0, true));
         }
         else if (accountType.equals(AccountType.SAVINGACCOUNT)) {
-            accountDAO.createNewAccount(new SavingAccount(accountType, String.format("%03d%06d",1, accountID), clientID, 0, true));
+            account = new SavingAccount(accountType.toString(), clientID, 0, true);
+//            accountDAO.createNewAccount(new SavingAccount(accountType, String.format("%03d%06d",1, accountID), clientID, 0, true));
         }
+
+        accountDAO.createNewAccount(account.getAccountType(), account.getClientID(), account.getBalance(), account.isWithdrawAllowed());
+        Long lastAccountID = accountDAO.getLastAccountID();
+        accountDAO.setFullAccID(String.format("%03d%06d",bankID, lastAccountID), accountDAO.getLastAccountID());
 
     }
 
