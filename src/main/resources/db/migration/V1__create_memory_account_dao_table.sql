@@ -9,13 +9,14 @@ CREATE TABLE Account
     CONSTRAINT PK_ACCOUNT PRIMARY KEY (account_id)
 );
 
--- CREATE TABLE Transactions
--- (
---     transaction_id BIGINT NOT NULL AUTO_INCREMENT,
---     name_of_transaction NVARCHAR(40)  NOT NULL,
---     amount DOUBLE PRECISION NOT NULL NOT NULL,
---     full_account_id NVARCHAR(40),
---     client_id INT NOT NULL,
---     transaction_status BIT NOT NULL,
---     CONSTRAINT PK_TRANSACTIONS PRIMARY KEY (transaction_id)
--- );
+CREATE TABLE Transactions
+(
+    transaction_id BIGINT NOT NULL AUTO_INCREMENT,
+    name_of_transaction NVARCHAR(40)  NOT NULL,
+    amount DOUBLE PRECISION NOT NULL NOT NULL,
+    full_account_id NVARCHAR(40),
+    client_id INT NOT NULL,
+    transaction_status BIT NOT NULL,
+    date NVARCHAR(40),
+    CONSTRAINT PK_TRANSACTIONS PRIMARY KEY (transaction_id)
+);

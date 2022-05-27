@@ -19,7 +19,7 @@ public class MyCLI implements CLIUI{
     public double requestClientAmount(){
         System.out.print("Type amount: ");
         double amount = Double.parseDouble(scanner.nextLine());
-        while(amount < 0){
+        while(amount <= 0){
             System.out.println("You have to enter the positive number!");
             amount = Double.parseDouble(scanner.nextLine());
         }

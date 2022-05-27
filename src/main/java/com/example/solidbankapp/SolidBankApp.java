@@ -1,5 +1,6 @@
 package com.example.solidbankapp;
 
+import com.example.solidbankapp.dao.TransactionDAO;
 import com.example.solidbankapp.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,6 +24,7 @@ public class SolidBankApp implements CommandLineRunner{
         AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
         TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
         TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
+        TransactionDAO transactionDAO = context.getBean(TransactionDAO.class);
 
 
         //Инициализируем ApplicationContext - интерфейс через который будем работать с бинами
@@ -34,7 +36,7 @@ public class SolidBankApp implements CommandLineRunner{
         //MyCLI myCLI = context.getBean("myCLI", MyCLI.class);
 
         //Записал в переменную сообщение которое нужно каждый раз выводить
-        String msg = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit";
+        String msg = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transactions\n6 - this message\n7 - exit";
         System.out.println(msg);
         //while(true) loop чтобы каждый раз принимать данные через Scanner
         while(true){
@@ -59,7 +61,7 @@ public class SolidBankApp implements CommandLineRunner{
                         transactionWithdrawCLI.withdrawMoney(clientID);
                         break;
                     case "5":
-                        System.out.println("Not supported yet!");
+                        System.out.println(transactionDAO.getTransactions());
                         break;
                     case "6":
                         System.out.println(msg);

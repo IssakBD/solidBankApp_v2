@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Component
 public class TransactionWithdraw {
     AccountWithdrawService accountWithdrawService;
@@ -23,7 +26,11 @@ public class TransactionWithdraw {
 
     }
     public void execute(AccountWithdraw accountWithdraw, double amount){
-            accountWithdrawService.withdraw(amount, accountWithdraw);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
+        boolean transactionStatus = accountWithdrawService.withdraw(amount, accountWithdraw);
+        transactionDAO.addTransactions("Withdraw", amount, accountWithdraw.getFullAccountID(), accountWithdraw.getClientID(), transactionStatus, dtf.format(now));
     }
 
 }
