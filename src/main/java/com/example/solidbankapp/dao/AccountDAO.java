@@ -42,4 +42,9 @@ public interface AccountDAO extends CrudRepository<Account, Long>{
     @Query("SELECT * FROM ACCOUNT WHERE FULL_ACCOUNT_ID = :accountID")
     public Account getClientAccount(Long clientID, String accountID);
 
+    @Modifying
+    @Query("DELETE FROM ACCOUNT WHERE FULL_ACCOUNT_ID = :accountID")
+    public void deleteAccount(String accountID);
+
+
 }

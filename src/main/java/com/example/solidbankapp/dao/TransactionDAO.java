@@ -17,4 +17,7 @@ public interface TransactionDAO extends CrudRepository<Transaction, Long>{
     @Modifying
     @Query("INSERT INTO TRANSACTIONS (NAME_OF_TRANSACTION, AMOUNT, FULL_ACCOUNT_ID, CLIENT_ID, TRANSACTION_STATUS, DATE) VALUES (:nameOfTransaction, :amount, :fullAccountID, :clientID, :transactionStatus, :date)")
     void addTransactions(String nameOfTransaction, double amount, String fullAccountID, long clientID, boolean transactionStatus, String date);
+
+    @Query("SELECT * FROM TRANSACTIONS WHERE FULL_ACCOUNT_ID = :accountID")
+    public List<Transaction> getTransactionsByAccountId(String accountID);
 }
