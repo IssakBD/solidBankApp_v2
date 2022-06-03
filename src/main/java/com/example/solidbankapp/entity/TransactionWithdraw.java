@@ -1,6 +1,8 @@
 package com.example.solidbankapp.entity;
 
 import com.example.solidbankapp.dao.TransactionDAO;
+import com.example.solidbankapp.exceptions.withdrawAbility;
+import com.example.solidbankapp.service.AccountListingService;
 import com.example.solidbankapp.service.AccountWithdrawService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,11 +15,13 @@ import java.time.format.DateTimeFormatter;
 public class TransactionWithdraw {
     AccountWithdrawService accountWithdrawService;
     TransactionDAO transactionDAO;
+    private AccountListingService accountListingService;
 
     @Autowired
-    public TransactionWithdraw(AccountWithdrawService accountWithdrawService, TransactionDAO transactionDAO) {
+    public TransactionWithdraw(AccountWithdrawService accountWithdrawService, TransactionDAO transactionDAO, AccountListingService accountListingService) {
         this.accountWithdrawService = accountWithdrawService;
         this.transactionDAO = transactionDAO;
+        this.accountListingService = accountListingService;
     }
 
 
@@ -31,6 +35,14 @@ public class TransactionWithdraw {
         System.out.println(dtf.format(now));
         boolean transactionStatus = accountWithdrawService.withdraw(amount, accountWithdraw);
         transactionDAO.addTransactions("Withdraw", amount, accountWithdraw.getFullAccountID(), accountWithdraw.getClientID(), transactionStatus, dtf.format(now));
+    }
+
+    public void withdrawFromAccount(String fullAccountId, double amount) throws Exception {
+        Account account = accountListingService.getClientAccount(1L, fullAccountId);
+        if(!account.isWithdrawAllowed()){
+            throw new withdrawAbility("This is a fixed account, you can't withdraw money!");
+        }
+        accountWithdrawService.withdraw(amount, (AccountWithdraw) account);
     }
 
 }

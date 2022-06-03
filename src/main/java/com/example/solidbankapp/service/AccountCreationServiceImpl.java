@@ -27,7 +27,6 @@ public class AccountCreationServiceImpl implements AccountCreationService{
 //            accountDAO.createNewAccount(new SavingAccount(accountType, String.format("%03d%06d",1, accountID), clientID, 0, true));
             isAccountCreated = true;
         }
-
         accountDAO.createNewAccount(account.getAccountType(), account.getClientID(), account.getBalance(), account.isWithdrawAllowed());
         Long lastAccountID = accountDAO.getLastAccountID();
         accountDAO.setFullAccID(String.format("%03d%06d",bankID, lastAccountID), accountDAO.getLastAccountID());

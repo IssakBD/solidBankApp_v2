@@ -1,15 +1,15 @@
 package com.example.solidbankapp;
 
 import com.example.solidbankapp.dao.TransactionDAO;
-import com.example.solidbankapp.entity.*;
+import com.example.solidbankapp.entity.AccountBasicCLI;
+import com.example.solidbankapp.entity.MyCLI;
+import com.example.solidbankapp.entity.TransactionDepositCLI;
+import com.example.solidbankapp.entity.TransactionWithdrawCLI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 public class SolidBankApp implements CommandLineRunner{
