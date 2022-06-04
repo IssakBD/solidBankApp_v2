@@ -42,7 +42,8 @@ public class TransactionWithdraw {
         if(!account.isWithdrawAllowed()){
             throw new withdrawAbility("This is a fixed account, you can't withdraw money!");
         }
-        accountWithdrawService.withdraw(amount, (AccountWithdraw) account);
+        AccountWithdraw accountWithdraw = accountListingService.getClientWithdrawAccount(1L, fullAccountId);
+        accountWithdrawService.withdraw(amount, accountWithdraw);
     }
 
 }
