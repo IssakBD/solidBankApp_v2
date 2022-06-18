@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountCreationServiceImpl implements AccountCreationService{
+
+    @Autowired
     private AccountDAO accountDAO;
-//String.format("%03d%06d",1, accountID),
+
     @Override
     public void create(AccountType accountType, long bankID, Long clientID) {
         boolean isAccountCreated = false;

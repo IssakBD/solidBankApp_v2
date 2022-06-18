@@ -12,7 +12,13 @@ import java.util.List;
 @Service
 public interface AccountListingService {
     public Account getClientAccount(Long clientID, String accountID) throws AccountNotFound;
+
+    public Account getClientAccount(String accountID) throws AccountNotFound;
     public AccountWithdraw getClientWithdrawAccount(Long clientID, String accountID) throws Exception;
+    public AccountWithdraw getClientWithdrawAccount(String accountID) throws Exception;
     public List<Account> getClientAccounts(Long clientID);
+    public List<Account> getClientAccounts(String username);
     public List<Account> getClientAccountsByType(Long clientID, AccountType accountType);
+
+    public Long getClientIdByUsername(String username);
 }

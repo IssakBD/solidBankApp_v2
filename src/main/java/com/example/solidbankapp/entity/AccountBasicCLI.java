@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class AccountBasicCLI {
     private CreateAccountOperationUI createAccountOperationUI;
     private BankCore bankCore;
+
     private AccountListingService accountListing;
 
     @Autowired

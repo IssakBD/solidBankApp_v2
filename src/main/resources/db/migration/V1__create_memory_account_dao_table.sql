@@ -20,3 +20,12 @@ CREATE TABLE Transactions
     date NVARCHAR(40),
     CONSTRAINT PK_TRANSACTIONS PRIMARY KEY (transaction_id)
 );
+
+create table USER_ENTITY
+(
+    id INTEGER auto_increment not null primary key,
+    login    nvarchar(50),
+    password nvarchar(500),
+    role    nvarchar(500)
+);
+
